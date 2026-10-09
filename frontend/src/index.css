@@ -1,0 +1,362 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..800;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Martel:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+ * NIRVANA DESIGN SYSTEM — Minimalist Zen & Sanctuary
+ * 
+ * Calm, clean, high-clarity palette.
+ * Absolutely NO colored glows, NO murky muddy tints.
+ * ========================================================= */
+
+html {
+  font-size: 110%;
+}
+
+:root,
+[data-theme="light"],
+.light {
+  color-scheme: light;
+
+  /* Base Canvas & Surfaces */
+  --bg-base: #FAF8F5;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  --bg-subtle: #F5F3EF;
+
+  /* Typography */
+  --text-primary: #1C1917;    /* Stone-900 */
+  --text-secondary: #57534E;  /* Stone-600 */
+  --text-muted: #8C8680;      /* Stone-400 */
+
+  /* Borders & Dividers */
+  --border-soft: #E7E5E4;     /* Stone-200 */
+  --border-subtle: #F5F5F4;   /* Stone-100 */
+
+  /* Neutral Soft Elevation — Clean, No Glow */
+  --shadow-sm: 0 1px 2px 0 rgba(28, 25, 23, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(28, 25, 23, 0.06);
+  --shadow-lg: 0 10px 25px -4px rgba(28, 25, 23, 0.08);
+
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: #E7E5E4;
+  --glass-shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.05);
+  --glass-hover-shadow: 0 8px 24px -4px rgba(28, 25, 23, 0.08);
+
+  /* Clean Zone Backgrounds (Gentle off-whites & warm tints, NOT murky) */
+  --zone-hero-bg: #F5F3EF;
+  --zone-lavender-bg: #F4F3F8;
+  --zone-honey-bg: #FAF6EF;
+  --zone-mint-bg: #F1F6F3;
+  --zone-wisdom-bg: #F8F5EE;
+  --zone-sky-bg: #F2F5F9;
+
+  --navbar-bg: rgba(255, 255, 255, 0.90);
+  --card-hover-bg: #FFFFFF;
+
+  /* Accents */
+  --accent-primary: #4F46E5;  /* Indigo-600 */
+  --accent-sage: #2D6A4F;     /* Clean Forest Sage */
+  --accent-rose: #E07A5F;     /* Warm Terracotta Blush */
+  --accent-gold: #D97706;     /* Amber-600 */
+
+  /* Backward Compat Aliases */
+  --accent-lavender: #4F46E5;
+  --accent-peach: #E07A5F;
+  --accent-mint: #2D6A4F;
+  --accent-honey: #D97706;
+  --accent-sky: #4F46E5;
+
+  /* All glows removed completely — pure transparent */
+  --glow-lavender: transparent;
+  --glow-peach: transparent;
+  --glow-mint: transparent;
+  --glow-teal: transparent;
+  --glow-sage: transparent;
+  --glow-violet: transparent;
+  --glow-rose: transparent;
+
+  --scrollbar-track: #FAF8F5;
+}
+
+[data-theme="dark"],
+.dark {
+  color-scheme: dark;
+
+  /* Base Canvas & Surfaces */
+  --bg-base: #0F1117;
+  --bg-surface: #181B24;
+  --bg-elevated: #202430;
+  --bg-subtle: #141720;
+
+  /* Typography */
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+
+  /* Borders & Dividers */
+  --border-soft: #282D3D;
+  --border-subtle: #1E2230;
+
+  /* Clean Dark Elevation */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px 0 rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 30px 0 rgba(0, 0, 0, 0.45);
+
+  --glass-bg: rgba(24, 27, 36, 0.92);
+  --glass-border: #282D3D;
+  --glass-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.35);
+  --glass-hover-shadow: 0 8px 28px 0 rgba(0, 0, 0, 0.45);
+
+  /* Clean Dark Zone Backgrounds */
+  --zone-hero-bg: #141720;
+  --zone-lavender-bg: #161726;
+  --zone-honey-bg: #181714;
+  --zone-mint-bg: #121816;
+  --zone-wisdom-bg: #181613;
+  --zone-sky-bg: #131722;
+
+  --navbar-bg: rgba(20, 23, 32, 0.92);
+  --card-hover-bg: #202430;
+
+  /* Accents */
+  --accent-primary: #818CF8;
+  --accent-sage: #52B788;
+  --accent-rose: #FB7185;
+  --accent-gold: #FBBF24;
+
+  --accent-lavender: #818CF8;
+  --accent-peach: #FB7185;
+  --accent-mint: #52B788;
+  --accent-honey: #FBBF24;
+  --accent-sky: #818CF8;
+
+  --glow-lavender: transparent;
+  --glow-peach: transparent;
+  --glow-mint: transparent;
+  --glow-teal: transparent;
+  --glow-sage: transparent;
+  --glow-violet: transparent;
+  --glow-rose: transparent;
+
+  --scrollbar-track: #0F1117;
+}
+
+/* =========================================================
+ * BASE STYLES
+ * ========================================================= */
+body {
+  margin: 0;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* =========================================================
+ * ZONE COLOR WORLDS — Clean Tint, ZERO Glow
+ * ========================================================= */
+.zone-cream-peach {
+  background-color: var(--zone-hero-bg);
+}
+.zone-lavender {
+  background-color: var(--zone-lavender-bg);
+}
+.zone-honey-cream {
+  background-color: var(--zone-honey-bg);
+}
+.zone-mint-sage {
+  background-color: var(--zone-mint-bg);
+}
+.zone-wisdom-gold {
+  background-color: var(--zone-wisdom-bg);
+}
+.zone-sky-violet {
+  background-color: var(--zone-sky-bg);
+}
+
+/* =========================================================
+ * CARDS & GLASS — Clean, Crisp, Minimal
+ * ========================================================= */
+.nirvana-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nirvana-glass-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nirvana-glass-hover {
+  transition: all 0.2s ease;
+}
+
+.nirvana-glass-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: #D6D3D1;
+}
+
+.dark .nirvana-glass-hover:hover {
+  border-color: #374151;
+}
+
+/* =========================================================
+ * BUTTONS — Crisp Solid / Clean Subtle Elevation (NO GLOW)
+ * ========================================================= */
+.btn-glow-lavender {
+  background-color: #4F46E5;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(79, 70, 229, 0.25);
+  transition: all 0.15s ease;
+}
+.btn-glow-lavender:hover {
+  background-color: #4338CA;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-glow-coral {
+  background-color: #E07A5F;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(224, 122, 95, 0.25);
+  transition: all 0.15s ease;
+}
+.btn-glow-coral:hover {
+  background-color: #D16B50;
+  box-shadow: 0 2px 6px rgba(224, 122, 95, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-glow-violet {
+  background-color: #D97706;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(217, 119, 6, 0.25);
+  transition: all 0.15s ease;
+}
+.btn-glow-violet:hover {
+  background-color: #B45309;
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+ * MOOD LOCK CARD — Clean & Minimal, NO GLOW
+ * ========================================================= */
+.mood-locked-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  animation: mood-card-lock 0.3s ease forwards;
+}
+
+@keyframes mood-card-lock {
+  0%   { transform: scale(0.98); opacity: 0.8; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+.glow-selected-pulse {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* =========================================================
+ * TYPOGRAPHY
+ * ========================================================= */
+.font-display {
+  font-family: "Fraunces", "Playfair Display", Georgia, serif;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+}
+
+.text-body-secondary {
+  color: var(--text-secondary);
+}
+
+.shadow-editorial {
+  box-shadow: var(--shadow-sm) !important;
+}
+.shadow-editorial-hover {
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* =========================================================
+ * BREATHING ANIMATIONS
+ * ========================================================= */
+@keyframes breathe-expand {
+  0%   { transform: scale(0.94); opacity: 0.75; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes breathe-hold {
+  0%, 100% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes breathe-contract {
+  0%   { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.94); opacity: 0.75; }
+}
+@keyframes breathe-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.6; }
+  50%       { transform: scale(1.06); opacity: 0.9; }
+}
+
+.breathe-inhale     { animation: breathe-expand   4s ease-in-out forwards; }
+.breathe-hold       { animation: breathe-hold      7s ease-in-out forwards; }
+.breathe-exhale     { animation: breathe-contract  8s ease-in-out forwards; }
+.breathe-box-inhale { animation: breathe-expand    4s ease-in-out forwards; }
+.breathe-box-hold1  { animation: breathe-hold      4s ease-in-out forwards; }
+.breathe-box-exhale { animation: breathe-contract  4s ease-in-out forwards; }
+.breathe-box-rest   { animation: breathe-pulse     4s ease-in-out forwards; }
+.breathe-idle       { animation: breathe-pulse   3.5s ease-in-out infinite; }
+
+/* =========================================================
+ * SCROLLBAR
+ * ========================================================= */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-soft);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A8A29E;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* =========================================================
+ * SELECTION
+ * ========================================================= */
+::selection {
+  background: #E0E7FF;
+  color: #3730A3;
+}
+.dark ::selection {
+  background: #312E81;
+  color: #E0E7FF;
+}
+
+/* =========================================================
+ * REDUCED MOTION
+ * ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
