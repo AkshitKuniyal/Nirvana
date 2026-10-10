@@ -1,4 +1,12 @@
+import sys
 import time
+from pathlib import Path
+
+# Ensure package root is present in sys.path when deployed in Vercel services mode with root="backend"
+_root = str(Path(__file__).resolve().parent.parent)
+if _root not in sys.path:
+    sys.path.insert(0, _root)
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
