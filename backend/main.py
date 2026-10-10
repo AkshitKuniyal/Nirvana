@@ -1,11 +1,23 @@
 import sys
 import time
+import types
 from pathlib import Path
 
-# Ensure package root is present in sys.path when deployed in Vercel services mode with root="backend"
-_root = str(Path(__file__).resolve().parent.parent)
-if _root not in sys.path:
-    sys.path.insert(0, _root)
+# Ensure package root is present in sys.path when deployed in Vercel services mode
+_this_dir = str(Path(__file__).resolve().parent)
+_repo_root = str(Path(__file__).resolve().parent.parent)
+
+for p in [_repo_root, _this_dir]:
+    if p not in sys.path:
+        sys.path.insert(0, p)
+
+# If 'backend' package cannot be found directly (e.g. root is 'backend/'), alias it
+try:
+    import backend
+except ImportError:
+    backend_pkg = types.ModuleType("backend")
+    backend_pkg.__path__ = [_this_dir]
+    sys.modules["backend"] = backend_pkg
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,7 +37,9 @@ from backend.routers.privacy import router as privacy_router
 app = FastAPI(
     title="Nirvana API",
     description="Adaptive Multimodal Mental Wellness & Emotional Support Platform Orchestration Engine",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/docs",
+    openapi_url="/openapi.json"
 )
 
 # CORS configuration
@@ -55,16 +69,24 @@ async def global_exception_handler(request: Request, exc: Exception):
         content={"message": "Something went quiet for a moment. You can take a breath and try again."}
     )
 
-# Mount domain routers
-app.include_router(companion_router)
-app.include_router(memory_router)
-app.include_router(journal_router)
-app.include_router(mood_router)
-app.include_router(wellness_router)
-app.include_router(gita_router)
-app.include_router(insights_router)
-app.include_router(privacy_router)
+# Mount domain routers under BOTH /api and root for universal compatibility
+domain_routers = [
+    companion_router,
+    memory_router,
+    journal_router,
+    mood_router,
+    wellness_router,
+    gita_router,
+    insights_router,
+    privacy_router,
+]
+for r in domain_routers:
+    app.include_router(r, prefix="/api")
+    app.include_router(r)
 
+@app.get("/")
+@app.get("/api")
+@app.get("/health")
 @app.get("/api/health")
 async def health_check():
     return {

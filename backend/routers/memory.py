@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Optional
 from backend.services.memory_service import memory_service
 
-router = APIRouter(prefix="/api/memory", tags=["Memory"])
+router = APIRouter(prefix="/memory", tags=["Memory"])
 
 class CreateMemoryRequest(BaseModel):
     user_id: str = "default-user"

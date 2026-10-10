@@ -5,7 +5,7 @@ from datetime import datetime
 import uuid
 from backend.services.gita_service import gita_service
 
-router = APIRouter(prefix="/api/gita", tags=["Spiritual Corner"])
+router = APIRouter(prefix="/gita", tags=["Spiritual Corner"])
 
 # Local fallback for saved verses (used only if Supabase is unavailable)
 _fallback_verses: Dict[str, List[Dict[str, Any]]] = {}

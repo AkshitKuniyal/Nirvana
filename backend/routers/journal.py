@@ -5,7 +5,7 @@ from datetime import datetime
 import uuid
 from backend.config import settings
 
-router = APIRouter(prefix="/api/journal", tags=["Journal"])
+router = APIRouter(prefix="/journal", tags=["Journal"])
 
 # ---------------------------------------------------------------------------
 # Supabase-backed storage with graceful local fallback

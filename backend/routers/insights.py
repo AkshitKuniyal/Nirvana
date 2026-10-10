@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from backend.services.insight_service import insight_service
 from backend.services.memory_service import memory_service
 
-router = APIRouter(prefix="/api/insights", tags=["Insights"])
+router = APIRouter(prefix="/insights", tags=["Insights"])
 
 
 def _get_db():

@@ -4,7 +4,7 @@ from typing import Optional, Dict, Any, List
 from datetime import datetime
 import uuid
 
-router = APIRouter(prefix="/api/wellness", tags=["Wellness"])
+router = APIRouter(prefix="/wellness", tags=["Wellness"])
 
 _fallback_store: Dict[str, List[Dict[str, Any]]] = {}
 

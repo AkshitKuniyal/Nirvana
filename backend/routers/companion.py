@@ -4,7 +4,7 @@ from typing import List, Dict, Any, Optional
 from backend.services.orchestrator import orchestrator
 from backend.services.inworld_service import inworld_service
 
-router = APIRouter(prefix="/api/companion", tags=["Companion"])
+router = APIRouter(prefix="/companion", tags=["Companion"])
 
 class ChatRequest(BaseModel):
     user_id: str = "default-user"

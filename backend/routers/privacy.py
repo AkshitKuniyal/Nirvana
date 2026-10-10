@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from backend.services.memory_service import memory_service
 
-router = APIRouter(prefix="/api/privacy", tags=["Privacy"])
+router = APIRouter(prefix="/privacy", tags=["Privacy"])
 
 
 def _get_db():
